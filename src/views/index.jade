@@ -1,0 +1,10 @@
+doctype
+html
+	head
+		title #{title} - My Site
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		header
+			h3 Here's a list with all users
+			each user in users
+				p= user.firstname + ' ' + user.lastname

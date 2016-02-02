@@ -1,0 +1,19 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      h1 Create new user
+      h4 Enter your details here
+      p 
+      form(action="http://localhost:3000/redirect" method="post")
+        p= "First name"
+        input(type="text", name="firstname")
+        p= "Last name"
+        input(type="text", name="lastname")
+        p= "Email"
+        input(type="text", name="email")
+        p
+        input(type="submit", name="submit")

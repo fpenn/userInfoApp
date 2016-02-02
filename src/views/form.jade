@@ -1,0 +1,12 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      h3 Who are you looking for?
+      p Search users (note: this is a case-sensitive search bar!):
+      form(action="http://localhost:3000/searchResults" method="post")
+        input(type="text", name="query")
+        input(type="submit", name="submit")

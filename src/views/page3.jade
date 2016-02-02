@@ -1,0 +1,26 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      h3 Users found:
+      p
+      - var array = users
+      - var query = search
+      for i in array
+        if i.firstname.includes(query)
+          - var response = i.firstname + " " + i.lastname 
+          ul
+            li= response 
+            p= "Email: " + i.email
+            p= " "
+        else if i.lastname.includes(query) 
+          - var response = i.firstname + " " + i.lastname
+          ul
+            li= response 
+            p= "Email: " + i.email
+            p= " "
+     
+        
