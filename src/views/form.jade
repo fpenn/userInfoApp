@@ -3,10 +3,46 @@ html
   head
     title #{title} - My Site
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
   body
     header
-      h3 Who are you looking for?
+      h2 Who are you looking for?
       p Search users (note: this is a case-sensitive search bar!):
       form(action="http://localhost:3000/searchResults" method="post")
-        input(type="text", name="query")
-        input(type="submit", name="submit")
+        input#query(type="text", name="query")
+        input#submit(type="submit", name="enter")
+      br
+      br
+      h4 Users found:
+      #searchResult
+        p
+        
+        script.
+
+            var onReceiveServ = function(response){
+
+            for(i= 0; i < response.length; i++){
+
+                    
+            $('#searchResult').append("<p>" + response[i] + "</p>");
+            
+
+            }
+           
+
+          };
+
+          var onSubmitFunc = function(e){
+            
+            e.preventDefault();
+            var result = $('#query').val();
+            $('#searchResult p').remove();
+            $.post('/searchResults', result, onReceiveServ);
+
+        
+
+          };
+
+          $('form').submit(onSubmitFunc);
+
+          

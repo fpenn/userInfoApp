@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({
 var usersArray = [];
 
 
-
 fs.readFile('./../users.json', function(error, data) {
 
 	if (error) {
@@ -62,10 +61,39 @@ app.get('/addNewUser', function(request, response) {
 
 app.post('/searchResults', function(request, response) {
 
-	var query = request.body.query
-	console.log(query);
-	response.render('page3', {users: usersArray, search: query});
+	var array = [];
+	var query = ''
+	var answer = []
 	
+	for(i in request.body){
+
+		query += i;
+	}
+
+	console.log(query);
+	var list = []
+
+	for(i = 0; i < usersArray.length; i++){
+
+		if(usersArray[i].firstname.includes(query) || usersArray[i].lastname.includes(query)){
+
+			
+			list.push(usersArray[i].firstname + ' ' + usersArray[i].lastname + ' ' + '(' + usersArray[i].email + ')');
+						
+		}
+
+
+		
+	}
+	
+	console.log(list);
+	response.send(list);
+
+});
+
+app.post('/searchTest', function(request, response){
+
+
 
 });
 
